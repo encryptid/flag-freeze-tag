@@ -73,8 +73,8 @@ p4 = taggers[3];
 p5 = taggers[4];
 p6 = taggers[5];
 
-let runners = new Team('Runners');
-let chasers = new Team('Chasers');
+let runners = new Team('R');
+let chasers = new Team('C');
 
 runners.add(p1);
 runners.add(p2);
@@ -88,7 +88,6 @@ console.log(runners);
 console.log(chasers);
 
 p6.tag(p1);
-console.log(p1.frozen);
-console.log(p6.frozen);
-
-console.log(runners);
+p5.tag(p2);
+console.log(p1.name + ' is now frozen? ' + p1.frozen);
+console.log(p2.name + ' is now frozen? ' + p2.frozen);
