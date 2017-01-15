@@ -16,16 +16,12 @@ module.exports = function Player(name, team, animal) {
         //if (
         function isFrozen() {
             console.log(player.name + ' is currently frozen? ' + player.frozen);
-            if (player.frozen = false) { // if player.frozen = false (or, unfrozen)...
-            return true                  // return true
-            }
+            return player.frozen = false  // if player.frozen = false (or, unfrozen), return true
         };
 
         function isRunner() {
             console.log(this.name + ' is a ' + this.team);
-            if (this.team = "Chasers") { // if this.team property is equal to "Chasers",
-                return true                // return true
-            }
+            return this.team = "Chasers" // if this.team property is equal to "Chasers", return true
         };
 
         return isFrozen() && isRunner()
