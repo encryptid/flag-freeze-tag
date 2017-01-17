@@ -2,31 +2,27 @@
  * Most commonly, we'll either export functions or objects.
  */
 
-module.exports = function Player(name, team, animal) {
+module.exports = function Player(name, teamName, animal) {
     this.name = name;
-    this.team = team;
+    this.team = teamName;
     this.type = animal;
     this.frozen = false;
     this.flag = false;
     this.tag = function tag(player) {
-            console.log(this.name + ' is tagging ' + player.name);
-        // console.log(player.frozen)
-        // return player.frozen = true;
-        // console.log(player.frozen);
-        //if (
-        function isFrozen() {
-            console.log(player.name + ' is currently frozen? ' + player.frozen);
-            return player.frozen = false  // if player.frozen = false (or, unfrozen), return true
-        };
-
-        function isRunner() {
-            console.log(this.name + ' is a ' + this.team);
-            return this.team = "Chasers" // if this.team property is equal to "Chasers", return true
-        };
-
-        return isFrozen() && isRunner()
-            // else (isFrozen() !== true && isRunner() !== true) { // if tagged is frozen and tagger is on Runners,
-            //     return player.frozen = false                       // tagger is unfrozen.
-            //}
+        console.log(this.name + ' is tagging ' + player.name);
+            if (this.team === "Chasers" && player.team === "Runners") {
+                return player.frozen = true
+            } else if (this.team === "Runners" && player.team === "Runners") {
+                return player.frozen = false
+            };
     };
+    this.getFlag = function getFlag() {
+        if (this.team === "Runners") {
+            console.log(this.name + ' retrieved the flag!');
+        return this.flag = true
+        } else {
+            console.log("Chasers can't get flags");
+            return false
+        }
+    }
 }

@@ -56,6 +56,7 @@
 
 let Player = require('./player');
 let Team = require('./team');
+let Flag = require('./flag');
 
 let taggers = [
     new Player('Tony', 'Runners', 'Tiger'),
@@ -73,8 +74,10 @@ p4 = taggers[3];
 p5 = taggers[4];
 p6 = taggers[5];
 
-let runners = new Team('R');
-let chasers = new Team('C');
+let runners = new Team('run');
+let chasers = new Team('chase');
+
+let flag = new Flag('yellow');
 
 runners.add(p1);
 runners.add(p2);
@@ -86,8 +89,29 @@ chasers.add(p6);
 
 console.log(runners);
 console.log(chasers);
+console.log(flag);
 
 p6.tag(p1);
 p5.tag(p2);
-console.log(p1.name + ' is now frozen? ' + p1.frozen);
-console.log(p2.name + ' is now frozen? ' + p2.frozen);
+p6.tag(p3);
+p5.tag(p4);
+
+// p1.tag(p5);
+// console.log(p1.name + ' is now frozen? ' + p1.frozen);
+// console.log(p2.name + ' is now frozen? ' + p2.frozen);
+// console.log(p5.name + ' is now frozen? ' + p5.frozen); // this should not be true
+
+// p1.tag(p2);
+// console.log(p2.name + ' was tagged by ' + p1.name + ' of the ' + p1.team + ' team and is frozen? ' + p2.frozen);
+
+// p5.tag(p6);
+// console.log(p6.frozen);
+
+// p1.getFlag()
+// console.log(p1.flag);
+console.log(chasers.roster);
+console.log(chasers.roster.length);
+console.log(p1.getFlag());
+console.log(p1.name + ' has flag? ' + p1.flag);
+console.log(p5.getFlag());
+console.log(chasers.won(runners));
