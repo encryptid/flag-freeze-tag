@@ -58,13 +58,16 @@ let Player = require('./player');
 let Team = require('./team');
 let Flag = require('./flag');
 
+function gameOne() {
+    console.log("Running Game One");
+
 let taggers = [
-    new Player('Tony', 'Runners', 'Tiger'),
-    new Player('Leo', 'Runners', 'Wolf'),
-    new Player('Willa', 'Runners', 'Leopard'),
-    new Player('Ted', 'Runners', 'Sloth'),
-    new Player('Odette', 'Chasers', 'Zebra'),
-    new Player('Leslie', 'Chasers', 'Meercat'),
+    new Player('Tony', 'Runners'),
+    new Player('Leo', 'Runners'),
+    new Player('Willa', 'Runners'),
+    new Player('Ted', 'Runners'),
+    new Player('Odette', 'Chasers'),
+    new Player('Siobahn', 'Chasers'),
 ]
 
 p1 = taggers[0];
@@ -92,26 +95,72 @@ console.log(chasers);
 console.log(flag);
 
 p6.tag(p1);
+console.log(p1.name + ' is frozen? ' + p1.frozen);
 p5.tag(p2);
 p6.tag(p3);
 p5.tag(p4);
 
-// p1.tag(p5);
-// console.log(p1.name + ' is now frozen? ' + p1.frozen);
-// console.log(p2.name + ' is now frozen? ' + p2.frozen);
-// console.log(p5.name + ' is now frozen? ' + p5.frozen); // this should not be true
-
-// p1.tag(p2);
-// console.log(p2.name + ' was tagged by ' + p1.name + ' of the ' + p1.team + ' team and is frozen? ' + p2.frozen);
-
-// p5.tag(p6);
-// console.log(p6.frozen);
-
-// p1.getFlag()
-// console.log(p1.flag);
-console.log(chasers.roster);
-console.log(chasers.roster.length);
 console.log(p1.getFlag());
 console.log(p1.name + ' has flag? ' + p1.flag);
 console.log(p5.getFlag());
-console.log(chasers.won(runners));
+console.log("Chasers won? " + chasers.won(runners));
+};
+
+// end Game One
+
+function gameTwo() {
+    console.log("Running Game Two");
+    let taggers = [
+    new Player('Tom', 'Runners'),
+    new Player('Leslie', 'Runners'),
+    new Player('Ron', 'Chasers'),
+    new Player('Jerry', 'Runners'),
+    new Player('April', 'Runners'),
+    new Player('Andy', 'Chasers'),
+]
+
+Tom = taggers[0];
+Leslie = taggers[1];
+Ron = taggers[2];
+Jerry = taggers[3];
+April = taggers[4];
+Andy = taggers[5];
+
+let runners = new Team('run');
+let chasers = new Team('chase');
+
+let flag = new Flag('purple');
+
+runners.add(Tom);
+runners.add(Leslie);
+runners.add(Jerry);
+runners.add(April);
+
+chasers.add(Ron);
+chasers.add(Andy);
+
+console.log(runners);
+console.log(chasers);
+console.log(flag);
+
+console.log(Ron.team);
+console.log(Andy.team);
+
+Ron.tag(Leslie);
+console.log(Leslie.name +' is frozen? ' + Leslie.frozen);
+Andy.tag(April);
+console.log(April.name + ' is frozen? ' + April.frozen);
+Andy.tag(Jerry);
+console.log(Jerry.name + ' is frozen? ' + Jerry.frozen);
+Jerry.tag(Leslie);
+console.log(Leslie.name + ' is frozen? ' + Leslie.frozen);
+Ron.tag(Tom);
+console.log(Tom.name + ' is frozen? ' + Tom.frozen);
+
+chasers.won(runners);
+};
+
+// end Game Two
+
+gameOne();
+gameTwo();
